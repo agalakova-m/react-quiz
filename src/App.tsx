@@ -10,7 +10,7 @@ const TOTAL_QUESTIONS = 10;
 type AnswerObject = {
   question: string;
   answer: string;
-  correct: boolean;
+  isCorrect: boolean;
   correctAnswer: string;
 };
 
@@ -40,7 +40,24 @@ const App = () => {
     setLoading(false);
   };
 
-  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!gameOver) {
+      // user's answer
+      const answer = e.currentTarget.value;
+      // check the answer against correct answer
+      const isCorrect = questions[number].correct_answer === answer;
+      // add score if the answer is correct
+      if (isCorrect) setScore((prev) => prev + 1);
+      // save the answer in the array of user's answers
+      const answerObj = {
+        question: questions[number].question,
+        answer,
+        isCorrect,
+        correctAnswer: questions[number].correct_answer,
+      };
+      setUserAnswers((prev) => [...prev, answerObj]);
+    }
+  };
 
   const nextQuestion = () => {};
 
