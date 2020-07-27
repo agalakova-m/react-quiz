@@ -99,7 +99,7 @@ const App = () => {
           userAnswers.length === number + 1 &&
           number !== TOTAL_QUESTIONS - 1 && (
             <button className="next" onClick={nextQuestion}>
-              Next question
+              Next
             </button>
           )}
       </Wrapper>
