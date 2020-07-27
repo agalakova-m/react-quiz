@@ -23,12 +23,14 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [gameHasntStarted, setGameHasntStarted] = useState(true);
 
   console.log(questions);
 
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
+    setGameHasntStarted(false);
 
     const newQuestions = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
@@ -75,10 +77,10 @@ const App = () => {
     <>
       <GlobalStyle />
       <Wrapper>
-        <h1>React Quiz</h1>
-        {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
+        <h1>Quiz!</h1>
+        {gameHasntStarted && (
           <button className="start" onClick={startTrivia}>
-            Start
+            <span className="start__text">Start</span>
           </button>
         )}
 
@@ -100,6 +102,13 @@ const App = () => {
           number !== TOTAL_QUESTIONS - 1 && (
             <button className="next" onClick={nextQuestion}>
               Next
+            </button>
+          )}
+        {!gameHasntStarted &&
+          !loading &&
+          (gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
+            <button className="start" onClick={startTrivia}>
+              <span className="start__text">Restart?</span>
             </button>
           )}
       </Wrapper>

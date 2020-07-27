@@ -2,26 +2,32 @@ import styled, { keyframes, css } from 'styled-components';
 
 export const Wrapper = styled.div`
   max-width: 500px;
-  padding: 20px;
+  padding: 40px 30px;
   border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
   background-color: #fff;
   border-radius: 20px;
+  box-shadow: 10px 10px 0 #4100ff;
   margin-bottom: 40px;
 
   .number {
     font-size: 1rem;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
-  p {
+
+  .question {
     font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 20px;
   }
 `;
 
 export const InnerWrapper = styled(Wrapper)`
   margin-bottom: 0;
+  box-shadow: none;
+  padding: 0 20px;
 `;
 
 type ButtonWrapperProps = {
@@ -52,28 +58,27 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
       !correct &&
       userClicked &&
       css`
-        background-color: #ff5b5b;
+        background-color: #ff7181;
         animation: ${shake} 0.3s linear 1;
       `}
     /* correct answer */
     ${({ correct, userClicked }) =>
       correct && userClicked
         ? css`
-            background-color: #8cd867;
+            background-color: #8dfa8e;
             transition-delay: 0.2s;
             .layer {
-              animation: ${showLayer} 1.4s linear 1;
+              animation: ${showLayer} 1.2s linear 1;
             }
           `
         : correct &&
           !userClicked &&
           css`
-            background-color: #8cd867;
+            background-color: #8dfa8e;
           `}
 
   .layer {
-    color: #fff;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
     position: absolute;
     display: flex;
@@ -84,7 +89,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     height: 100%;
     left: 0;
     padding: 20px 0;
-    background-color: #8cd867;
+    background-color: #8dfa8e;
     transition: transform 0.2s ease;
   }
 `;
