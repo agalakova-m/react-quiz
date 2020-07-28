@@ -15,12 +15,17 @@ export const Wrapper = styled.div`
   .number {
     font-size: 1rem;
     margin-bottom: 15px;
+    user-select: none;
   }
 
   .question {
     font-size: 1.3rem;
     font-weight: 400;
     margin-bottom: 20px;
+
+    &::selection {
+      background-color: #ffd95c;
+    }
   }
 `;
 
@@ -40,7 +45,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     position: relative;
     transition: all 0.2s ease;
     width: 100%;
-    cursor: pointer;
+
     overflow: hidden;
     user-select: none;
     font-size: 0.8rem;
@@ -51,34 +56,52 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     background-color: #ececec;
 
     &:not(:disabled):hover {
+      cursor: pointer;
       background-color: #cccccc;
     }
+    ${({ userClicked }) =>
+      userClicked &&
+      css`
+        span {
+          font-weight: 500;
+        }
+      `}
+
     /* wrong answer */
     ${({ correct, userClicked }) =>
       !correct &&
       userClicked &&
       css`
-        background-color: #ff7181;
+        background-color: #ff0087;
         animation: ${shake} 0.3s linear 1;
+        span {
+          color: #fff;
+        }
       `}
     /* correct answer */
     ${({ correct, userClicked }) =>
       correct && userClicked
         ? css`
-            background-color: #8dfa8e;
+            background-color: #00ff9c;
             transition-delay: 0.2s;
             .layer {
               animation: ${showLayer} 1.2s linear 1;
+            }
+            span {
+              font-weight: 500;
             }
           `
         : correct &&
           !userClicked &&
           css`
-            background-color: #8dfa8e;
+            background-color: #00ff9c;
+            span {
+              font-weight: 500;
+            }
           `}
 
   .layer {
-    font-weight: 400;
+    font-weight: 500;
     text-transform: uppercase;
     position: absolute;
     display: flex;
@@ -89,7 +112,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     height: 100%;
     left: 0;
     padding: 20px 0;
-    background-color: #8dfa8e;
+    background-color: #00ff9c;
     transition: transform 0.2s ease;
   }
 `;

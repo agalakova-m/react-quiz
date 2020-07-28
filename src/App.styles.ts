@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding: 50px 0;
 
   > h1 {
     margin-bottom: 20px;
@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
   .start,
   .next {
     cursor: pointer;
-    background-color: #ffb30f;
+    background-color: #ff00fc;
     color: #1c0f13;
     font-size: 20px;
     font-weight: 500;
@@ -76,7 +76,7 @@ export const Wrapper = styled.div`
       transition-property: transform;
       transition-duration: 0.2s;
 
-      background-color: #ff0087;
+      background-color: #ff00fc;
       border-radius: 10px;
       z-index: 0;
       box-shadow: 7px 7px 0 #4100ff;
@@ -104,7 +104,7 @@ export const Wrapper = styled.div`
 
   .next {
     color: #fff;
-    background-color: #ff0087;
+    background-color: #ff00fc;
     box-shadow: 7px 7px 0 #4100ff;
   }
 `;
