@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import provider from './styles/provider';
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -10,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0 20px;
     display: flex;
     justify-content: center;
-    background-color: #FFE5D4;
+    background-color: ${provider.color.peachy};
   }
 
   * {
@@ -21,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     &:not(:disabled) {
-      color: #1c0f13;
+      color: ${provider.color.black};
     }
   }
 `;
@@ -52,8 +53,8 @@ export const Wrapper = styled.div`
   .start,
   .next {
     cursor: pointer;
-    background-color: #ff00fc;
-    color: #1c0f13;
+    background-color: ${provider.color.pink};
+    color: ${provider.color.white};
     font-size: 20px;
     font-weight: 500;
     border-radius: 10px;
@@ -76,10 +77,10 @@ export const Wrapper = styled.div`
       transition-property: transform;
       transition-duration: 0.2s;
 
-      background-color: #ff00fc;
+      background-color: ${provider.color.pink};
       border-radius: 10px;
       z-index: 0;
-      box-shadow: 7px 7px 0 #4100ff;
+      box-shadow: 7px 7px 0 ${provider.color.violet};
     }
 
     &:hover:after,
@@ -95,7 +96,7 @@ export const Wrapper = styled.div`
       width: 100%;
       display: flex;
       font-weight: 500;
-      color: #fff;
+      color: ${provider.color.white};
       align-items: center;
       justify-content: center;
       z-index: 100;
@@ -103,8 +104,8 @@ export const Wrapper = styled.div`
   }
 
   .next {
-    color: #fff;
-    background-color: #ff00fc;
-    box-shadow: 7px 7px 0 #4100ff;
+    color: ${provider.color.white};
+    background-color: ${provider.color.pink};
+    box-shadow: 7px 7px 0 ${provider.color.violet};
   }
 `;

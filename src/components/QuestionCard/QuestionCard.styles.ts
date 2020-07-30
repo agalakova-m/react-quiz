@@ -1,15 +1,16 @@
 import styled, { keyframes, css } from 'styled-components';
+import provider from '../../styles/provider';
 
 export const Wrapper = styled.div`
   max-width: 500px;
-  padding: 40px 30px;
+  padding: 35px 25px;
   border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${provider.color.white};
   border-radius: 20px;
-  box-shadow: 10px 10px 0 #4100ff;
+  box-shadow: 10px 10px 0 ${provider.color.violet};
   margin-bottom: 40px;
 
   .number {
@@ -24,7 +25,7 @@ export const Wrapper = styled.div`
     margin-bottom: 20px;
 
     &::selection {
-      background-color: #ffd95c;
+      background-color: ${provider.color.yellow};
     }
   }
 `;
@@ -53,11 +54,11 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 5px 0;
     border: none;
     border-radius: 10px;
-    background-color: #ececec;
+    background-color: ${provider.color.gray100};
 
     &:not(:disabled):hover {
       cursor: pointer;
-      background-color: #cccccc;
+      background-color: ${provider.color.gray200};
     }
     ${({ userClicked }) =>
       userClicked &&
@@ -72,17 +73,17 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
       !correct &&
       userClicked &&
       css`
-        background-color: #ff0087;
+        background-color: ${provider.color.red};
         animation: ${shake} 0.3s linear 1;
         span {
-          color: #fff;
+          color: ${provider.color.white};
         }
       `}
     /* correct answer */
     ${({ correct, userClicked }) =>
       correct && userClicked
         ? css`
-            background-color: #00ff9c;
+            background-color: ${provider.color.green};
             transition-delay: 0.2s;
             .layer {
               animation: ${showLayer} 1.2s linear 1;
@@ -94,7 +95,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         : correct &&
           !userClicked &&
           css`
-            background-color: #00ff9c;
+            background-color: ${provider.color.green};
             span {
               font-weight: 500;
             }
@@ -112,7 +113,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     height: 100%;
     left: 0;
     padding: 20px 0;
-    background-color: #00ff9c;
+    background-color: ${provider.color.green};
     transition: transform 0.2s ease;
   }
 `;
