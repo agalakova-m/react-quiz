@@ -1,31 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import provider from './styles/provider';
-
-export const GlobalStyle = createGlobalStyle`
-  html {
-    height: 100%;
-  }
-
-  body {
-    margin: 0;
-    padding: 0 20px;
-    display: flex;
-    justify-content: center;
-    background-color: ${provider.color.peachy};
-  }
-
-  * {
-    box-sizing: border-box;
-    font-family: 'Poppins', Roboto, sans-serif;
-    font-weight: 300;
-
-    margin: 0;
-    padding: 0;
-    &:not(:disabled) {
-      color: ${provider.color.black};
-    }
-  }
-`;
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -53,8 +26,8 @@ export const Wrapper = styled.div`
   .start,
   .next {
     cursor: pointer;
-    background-color: ${provider.color.pink};
-    color: ${provider.color.white};
+    background-color: ${({ theme }) => theme.buttonBgColor};
+    color: ${({ theme }) => theme.buttonTextColor};
     font-size: 20px;
     font-weight: 500;
     border-radius: 10px;
@@ -76,11 +49,10 @@ export const Wrapper = styled.div`
       width: 100%;
       transition-property: transform;
       transition-duration: 0.2s;
-
-      background-color: ${provider.color.pink};
+      background-color: ${({ theme }) => theme.buttonBgColor};
       border-radius: 10px;
       z-index: 0;
-      box-shadow: 7px 7px 0 ${provider.color.violet};
+      box-shadow: 7px 7px 0 ${({ theme }) => theme.shadowColor};
     }
 
     &:hover:after,
@@ -96,7 +68,7 @@ export const Wrapper = styled.div`
       width: 100%;
       display: flex;
       font-weight: 500;
-      color: ${provider.color.white};
+      color: ${({ theme }) => theme.buttonTextColor};
       align-items: center;
       justify-content: center;
       z-index: 100;
@@ -104,8 +76,8 @@ export const Wrapper = styled.div`
   }
 
   .next {
-    color: ${provider.color.white};
-    background-color: ${provider.color.pink};
-    box-shadow: 7px 7px 0 ${provider.color.violet};
+    color: ${({ theme }) => theme.buttonTextColor};
+    background-color: ${({ theme }) => theme.buttonBgColor};
+    box-shadow: 7px 7px 0 ${({ theme }) => theme.shadowColor};
   }
 `;

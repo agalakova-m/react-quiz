@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { fetchQuizQuestions } from './API';
 // components
 import QuestionCard from './components/QuestionCard/QuestionCard';
 // types
 import { QuestionState, Difficulty } from './API';
 // styled
-import { GlobalStyle, Wrapper } from './App.styles';
+import { Wrapper } from './App.styles';
+import { light, dark } from './styles/themes';
+import { GlobalStyle } from './styles/globalStyles';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -24,8 +27,21 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [gameHasntStarted, setGameHasntStarted] = useState(true);
+  const [theme, setTheme] = useState(light);
 
-  console.log(questions);
+  useEffect(() => {
+    const isDark = matchMedia('(prefers-color-scheme: dark)');
+
+    setTheme(isDark.matches ? dark : light);
+
+    isDark.addListener((event) => {
+      setTheme(event.matches ? dark : light);
+    });
+
+    return () => {
+      isDark.removeListener();
+    };
+  }, [theme]);
 
   const startTrivia = async () => {
     setLoading(true);
@@ -74,7 +90,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <ThemeProvider theme={light}>
       <GlobalStyle />
       <Wrapper>
         <h1>Quiz!</h1>
@@ -112,7 +128,7 @@ const App = () => {
             </button>
           )}
       </Wrapper>
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import provider from '../../styles/provider';
 
 export const Wrapper = styled.div`
   max-width: 500px;
@@ -8,9 +7,9 @@ export const Wrapper = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: ${provider.color.white};
+  background-color: ${({ theme }) => theme.cardBgColor};
   border-radius: 20px;
-  box-shadow: 10px 10px 0 ${provider.color.violet};
+  box-shadow: 10px 10px 0 ${({ theme }) => theme.shadowColor};
   margin-bottom: 40px;
 
   .number {
@@ -25,7 +24,7 @@ export const Wrapper = styled.div`
     margin-bottom: 20px;
 
     &::selection {
-      background-color: ${provider.color.yellow};
+      background-color: ${({ theme }) => theme.selectionColor};
     }
   }
 `;
@@ -54,11 +53,11 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     margin: 5px 0;
     border: none;
     border-radius: 10px;
-    background-color: ${provider.color.gray100};
+    background-color: ${({ theme }) => theme.answerBg};
 
     &:not(:disabled):hover {
       cursor: pointer;
-      background-color: ${provider.color.gray200};
+      background-color: ${({ theme }) => theme.answerBgHover};
     }
     ${({ userClicked }) =>
       userClicked &&
@@ -73,17 +72,17 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
       !correct &&
       userClicked &&
       css`
-        background-color: ${provider.color.red};
+        background-color: ${({ theme }) => theme.wrongColor};
         animation: ${shake} 0.3s linear 1;
         span {
-          color: ${provider.color.white};
+          color: ${({ theme }) => theme.buttonTextColor};
         }
       `}
     /* correct answer */
     ${({ correct, userClicked }) =>
       correct && userClicked
         ? css`
-            background-color: ${provider.color.green};
+            background-color: ${({ theme }) => theme.correctColor};
             transition-delay: 0.2s;
             .layer {
               animation: ${showLayer} 1.2s linear 1;
@@ -95,7 +94,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         : correct &&
           !userClicked &&
           css`
-            background-color: ${provider.color.green};
+            background-color: ${({ theme }) => theme.correctColor};
             span {
               font-weight: 500;
             }
@@ -113,7 +112,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     height: 100%;
     left: 0;
     padding: 20px 0;
-    background-color: ${provider.color.green};
+    background-color: ${({ theme }) => theme.correctColor};
     transition: transform 0.2s ease;
   }
 `;
