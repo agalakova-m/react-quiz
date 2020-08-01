@@ -3,11 +3,12 @@ import { ThemeProvider } from 'styled-components';
 import { fetchQuizQuestions } from './API';
 // components
 import QuestionCard from './components/QuestionCard/QuestionCard';
+import Toggle from './components/Toggle/Toggle';
 // types
 import { QuestionState, Difficulty } from './API';
 // styled
 import { Wrapper } from './App.styles';
-import { light, dark } from './styles/themes';
+import { lightTheme, darkTheme } from './styles/themes';
 import { GlobalStyle } from './styles/globalStyles';
 
 const TOTAL_QUESTIONS = 10;
@@ -27,21 +28,31 @@ const App = () => {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [gameHasntStarted, setGameHasntStarted] = useState(true);
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState('light');
 
-  useEffect(() => {
-    const isDark = matchMedia('(prefers-color-scheme: dark)');
+  // check user's theme
+  // useEffect(() => {
+  //   const isDark = matchMedia('(prefers-color-scheme: dark)');
 
-    setTheme(isDark.matches ? dark : light);
+  //   setTheme(isDark.matches ? 'dark' : 'light');
 
-    isDark.addListener((event) => {
-      setTheme(event.matches ? dark : light);
-    });
+  //   isDark.addListener((event) => {
+  //     setTheme(event.matches ? 'dark' : 'light');
+  //   });
 
-    return () => {
-      isDark.removeListener();
-    };
-  }, [theme]);
+  //   return () => {
+  //     isDark.removeListener();
+  //   };
+  // }, [theme]);
+
+  // toggle between themes
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
 
   const startTrivia = async () => {
     setLoading(true);
@@ -89,10 +100,13 @@ const App = () => {
     }
   };
 
+  console.log(theme);
+
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Wrapper>
+        <Toggle theme={theme} toggleTheme={toggleTheme} />
         <h1>Quiz!</h1>
         {gameHasntStarted && (
           <button className="start" onClick={startTrivia}>

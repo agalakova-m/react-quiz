@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px 0;
+  width: 100vw;
 
   > h1 {
     margin-bottom: 20px;
@@ -14,10 +15,6 @@ export const Wrapper = styled.div`
   > p {
   }
 
-  button {
-    min-width: 200px;
-  }
-
   .score {
     font-size: 2rem;
     margin-bottom: 20px;
@@ -25,6 +22,7 @@ export const Wrapper = styled.div`
 
   .start,
   .next {
+    min-width: 200px;
     cursor: pointer;
     background-color: ${({ theme }) => theme.buttonBgColor};
     color: ${({ theme }) => theme.buttonTextColor};

@@ -1,4 +1,4 @@
-export const light = {
+export const lightTheme = {
   bgColor: '#FFE5D4',
   textColor: '#1c0f13',
   cardBgColor: '#fff',
@@ -12,7 +12,7 @@ export const light = {
   answerBgHover: '#cccccc',
 };
 
-export const dark = {
+export const darkTheme = {
   bgColor: '#130055',
   textColor: '#FFE5D4',
   cardBgColor: '#fff',
