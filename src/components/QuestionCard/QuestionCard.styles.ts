@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from 'styled-components';
 
 export const Wrapper = styled.div`
+  min-width: 450px;
   max-width: 500px;
   padding: 35px 25px;
   border-radius: 10px;
@@ -29,9 +30,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const InnerWrapper = styled(Wrapper)`
-  margin-bottom: 0;
-  box-shadow: none;
+export const InnerWrapper = styled.div`
   padding: 0 20px;
 `;
 

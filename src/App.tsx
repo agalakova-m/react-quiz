@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { fetchQuizQuestions } from './API';
 // components
@@ -100,8 +100,6 @@ const App = () => {
     }
   };
 
-  console.log(theme);
-
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
@@ -110,7 +108,7 @@ const App = () => {
         <h1>Quiz!</h1>
         {gameHasntStarted && (
           <button className="start" onClick={startTrivia}>
-            <span className="start__text">Start</span>
+            Start
           </button>
         )}
 
@@ -138,7 +136,7 @@ const App = () => {
           !loading &&
           (gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
             <button className="start" onClick={startTrivia}>
-              <span className="start__text">Restart?</span>
+              Restart?
             </button>
           )}
       </Wrapper>

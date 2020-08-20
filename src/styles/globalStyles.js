@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.bgColor};
     font-family: 'Poppins', Roboto, sans-serif;
     font-weight: 300;
-    transition: all 0.2s linear;
+    transition: all 0.15s linear;
   }
 
   * {
