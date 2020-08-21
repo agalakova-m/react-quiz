@@ -19,7 +19,7 @@ export const ToggleStyles = styled.button`
     width: 17px;
     height: 17px;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.textColor};
+    background-color: ${({ theme }) => theme.shadowColor};
     transition: all 0.2s linear;
     transform: ${({ lightTheme }) =>
       lightTheme ? css`translateX(0)` : css`translateX(25px)`};
